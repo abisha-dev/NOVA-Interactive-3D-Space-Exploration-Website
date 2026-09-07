@@ -199,31 +199,12 @@ NOVA/
 ```bash
 npm run dev
 ```
-
 Open the URL provided by Vite in your browser.
-
 Example:
-
 ```text
 http://localhost:3000
 ```
-
-
 ---
-
-## 🎨 Design Highlights
-
-- 🌌 Cosmic dark theme
-- ✨ Glowing visual effects
-- 🪐 Interactive 3D planets
-- 🌠 Animated starfield
-- 🔮 Glassmorphism interface
-- 💫 Smooth animations
-- 📱 Fully responsive design
-- 🖱️ Interactive 3D controls
-- 🌌 Procedural Milky Way galaxy
-- ⚡ Modern frontend architecture
-
 ---
 
 ## 🎯 Project Objectives
@@ -231,32 +212,22 @@ http://localhost:3000
 The main objectives of NOVA are:
 
 - Build an immersive 3D web experience
-- Learn and implement Three.js
-- Understand WebGL-based rendering
-- Create interactive 3D planetary visualizations
-- Implement responsive web design
-- Explore procedural particle systems
-- Develop modern frontend interfaces
-- Build a website without using frontend frameworks
+- Learn and implement Three.js and Understand WebGL-based rendering
+- Create interactive 3D planetary visualizations 
+- Implement responsive web design and Explore procedural particle systems
+- Develop modern frontend interfaces and Build a website without using frontend frameworks
+
 
 ---
 
 ## 🔮 Future Enhancements
 
 - 🌙 Add more planets and moons
-- 🚀 Add interactive spacecraft
-- 🔭 Add telescope exploration mode
-- ⭐ Add constellation explorer
-- 🌍 Add planet comparison
+- 🔭 Add telescope exploration mode and Add interactive spacecraft
+- ⭐ Add constellation explorer and Add planet comparison
 - 🛰️ Integrate real-time space data
-- 🌌 Add more galaxy types
-- 🎮 Add advanced 3D interactions
-
+- 🌌 Add more galaxy types and Add advanced 3D interactions
 ---
-
-
-
-
 
 ## 🌌 Project Preview
 
@@ -277,7 +248,7 @@ The main objectives of NOVA are:
 
 <p align="center">
   <img width="1891" height="971" alt="image" src="https://github.com/user-attachments/assets/d847698b-6516-4793-a9f4-2bb00aba9821" />
-" />
+
 </p>
 
 ---
