@@ -175,6 +175,111 @@ NOVA/
 ---
 
 
+```
+
+---
+
+## 📂 File Description
+
+| File | Description |
+|---|---|
+| `index.html` | Main webpage structure and sections |
+| `main.js` | Application logic, navigation, interactions, and form handling |
+| `style.css` | Cosmic theme, animations, layouts, and responsive design |
+| `planets.js` | Three.js 3D planet scenes and galaxy visualization |
+| `starfield.js` | Animated 2D starfield |
+| `vite.config.js` | Vite configuration |
+| `package.json` | Project dependencies and scripts |
+| `README.md` | Project documentation |
+
+
+
+### 4. Run Development Server
+
+```bash
+npm run dev
+```
+
+Open the URL provided by Vite in your browser.
+
+Example:
+
+```text
+http://localhost:3000
+```
+
+
+---
+
+## 🎨 Design Highlights
+
+- 🌌 Cosmic dark theme
+- ✨ Glowing visual effects
+- 🪐 Interactive 3D planets
+- 🌠 Animated starfield
+- 🔮 Glassmorphism interface
+- 💫 Smooth animations
+- 📱 Fully responsive design
+- 🖱️ Interactive 3D controls
+- 🌌 Procedural Milky Way galaxy
+- ⚡ Modern frontend architecture
+
+---
+
+## 🎯 Project Objectives
+
+The main objectives of NOVA are:
+
+- Build an immersive 3D web experience
+- Learn and implement Three.js
+- Understand WebGL-based rendering
+- Create interactive 3D planetary visualizations
+- Implement responsive web design
+- Explore procedural particle systems
+- Develop modern frontend interfaces
+- Build a website without using frontend frameworks
+
+---
+
+## 🔮 Future Enhancements
+
+- 🌙 Add more planets and moons
+- 🚀 Add interactive spacecraft
+- 🔭 Add telescope exploration mode
+- ⭐ Add constellation explorer
+- 🌍 Add planet comparison
+- 🛰️ Integrate real-time space data
+- 🌌 Add more galaxy types
+- 🎮 Add advanced 3D interactions
+
+---
+
+
+
+## 🌌 Project Preview
+
+<p align="center">
+  <img width="1896" height="911" alt="NOVA Home Section" src="https://github.com/user-attachments/assets/011fe95f-4479-4148-ba7d-3405a92b1486" />
+</p>
+
+<p align="center">
+  <img width="1897" height="812" alt="NOVA Planets Section" src="https://github.com/user-attachments/assets/be39f460-fea4-417d-aa8b-d9d85d013dd6" />
+</p>
+
+<p align="center">
+  <img width="1897" height="907" alt="NOVA About Section" src="https://github.com/user-attachments/assets/80c328b9-1bb7-43e1-a41d-3dc70564f418" />
+</p>
+
+<p align="center">
+  <img width="1893" height="906" alt="NOVA Contact Section" src="https://github.com/user-attachments/assets/9feca6ed-e04a-453d-b920-ab079b151c8b" />
+</p>
+
+---
+
+<p align="center">
+  <strong>🌌 NOVA — Explore Beyond the Ordinary 🚀</strong>
+</p>
+
 ## 🌌 Project Preview
 
 <p align="center">
