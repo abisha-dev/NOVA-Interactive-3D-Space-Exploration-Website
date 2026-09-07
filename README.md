@@ -172,3 +172,14 @@ NOVA/
     │
     ├── main.js
     └── style.css
+---
+
+## 🌌 Project Preview
+
+<p align="center">
+  <img src="./assets/nova-preview.png" alt="NOVA - Explore the Universe" width="100%">
+</p>
+
+<p align="center">
+  <strong>🌌 NOVA — Explore Beyond the Ordinary 🚀</strong>
+</p>
