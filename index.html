@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NOVA — Explore the Universe</title>
+    <meta name="description" content="NOVA — Discover a world beyond Earth. Interactive 3D space exploration website built with Three.js and vanilla JavaScript." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Orbitron:wght@400;600;700;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+
+  
+    <nav class="navbar" id="navbar" role="navigation" aria-label="Main Navigation">
+      <a href="#home" class="nav-logo" aria-label="NOVA Home">
+        <span class="logo-icon">✦</span> NOVA
+      </a>
+      <div class="nav-links">
+        <a href="#home"    class="nav-link active">Home</a>
+        <a href="#planets" class="nav-link">Planets</a>
+        <a href="#about"   class="nav-link">About</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </div>
+      <div class="nav-actions">
+        <button id="btn-audio" class="audio-btn" title="Toggle Cosmic Sound Ambient" aria-label="Toggle Cosmic Sound Ambient">
+          <span>🔇</span> Sound: OFF
+        </button>
+        <button class="nav-cta" onclick="document.getElementById('planets').scrollIntoView({behavior:'smooth'})">
+          Explore Now
+        </button>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Mobile Navigation Menu">
+      <div class="mobile-menu-links">
+        <a href="#home"    class="mobile-link">Home</a>
+        <a href="#planets" class="mobile-link">Planets</a>
+        <a href="#about"   class="mobile-link">About</a>
+        <a href="#contact" class="mobile-link">Contact</a>
+      </div>
+      <div class="mobile-menu-actions">
+        <button id="btn-audio-mobile" class="audio-btn mobile-audio-btn" title="Toggle Cosmic Sound Ambient">
+          <span>🔇</span> Sound: OFF
+        </button>
+        <button class="btn-primary mobile-cta" onclick="document.getElementById('planets').scrollIntoView({behavior:'smooth'}); document.getElementById('mobile-menu').classList.remove('open'); document.getElementById('hamburger').classList.remove('active'); document.body.classList.remove('menu-open');">
+          Explore Planets 🪐
+        </button>
+      </div>
+    </div>
+
+
+    <section id="home" class="hero">
+      <!-- 2D Canvas Starfield -->
+      <canvas id="star-canvas"></canvas>
+
+      <div class="hero-content">
+        <div class="hero-left">
+          <div class="hero-tag">
+            <span class="tag-dot"></span> Live 3D Solar System
+          </div>
+          <h1 class="hero-title">
+            Explore The<br/><span class="gradient-text">Universe</span>
+          </h1>
+          <p class="hero-desc">
+            Discover celestial wonders, mesmerizing atmospheres, and
+            magnificent planetary rings. Experience our solar system through
+            interactive real-time 3D graphics.
+          </p>
+
+          <!-- Planet Switcher Tabs -->
+          <div class="planet-switcher-wrapper">
+            <span class="switcher-label">Select Planet:</span>
+            <div class="hero-planet-tabs">
+              <button class="hero-tab active" data-planet="earth">🌍 Earth</button>
+              <button class="hero-tab" data-planet="mars">🔴 Mars</button>
+              <button class="hero-tab" data-planet="jupiter">🟠 Jupiter</button>
+              <button class="hero-tab" data-planet="saturn">🪐 Saturn</button>
+              <button class="hero-tab" data-planet="neptune">🔵 Neptune</button>
+            </div>
+          </div>
+
+          <div class="hero-btns">
+            <button class="btn-primary" onclick="document.getElementById('planets').scrollIntoView({behavior:'smooth'})">
+              Explore All Planets →
+            </button>
+            <button class="btn-secondary" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">
+              Cosmic Facts
+            </button>
+          </div>
+
+          <div class="hero-stats">
+            <div class="stat"><span class="stat-num">8</span><span class="stat-label">Major Planets</span></div>
+            <div class="stat-divider"></div>
+            <div class="stat"><span class="stat-num">4.6B</span><span class="stat-label">Years of History</span></div>
+            <div class="stat-divider"></div>
+            <div class="stat"><span class="stat-num">200+</span><span class="stat-label">Known Moons</span></div>
+          </div>
+        </div>
+
+        <div class="hero-right">
+          <div class="hero-planet-wrapper">
+            <div class="orbit-ring ring-1"></div>
+            <div class="orbit-ring ring-2"></div>
+            <canvas id="hero-canvas"></canvas>
+            <div class="planet-label-badge" id="hero-badge">🌍 Earth</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scroll Indicator -->
+      <div class="scroll-hint" onclick="document.getElementById('planets').scrollIntoView({behavior:'smooth'})" role="button" aria-label="Scroll to explore planets" tabindex="0">
+        <div class="scroll-line"></div>
+        <span>Scroll to explore</span>
+      </div>
+    </section>
+
+  
+    <section id="planets" class="section planets-section">
+      <div class="section-header">
+        <div class="section-tag">Interactive Showcase</div>
+        <h2 class="section-title">Discover the <span class="gradient-text">Planets</span></h2>
+        <p class="section-desc">Drag to rotate 360°, scroll to zoom, or click inspect for full detailed telemetry.</p>
+      </div>
+
+      <div class="planet-cards">
+
+        <!-- 1. Earth Card -->
+        <div class="planet-card" id="card-earth">
+          <div class="card-canvas-wrapper">
+            <canvas id="canvas-earth" class="planet-canvas"></canvas>
+            <span class="card-canvas-hint">🖱️ Drag to rotate</span>
+          </div>
+          <div class="card-info">
+            <div class="card-head">
+              <div class="planet-icon">🌍</div>
+              <div>
+                <h3 class="card-title">Earth</h3>
+                <p class="card-sub">The Blue Oasis</p>
+              </div>
+            </div>
+            <p class="card-desc">Our home planet, teeming with life, vast oceans, and a dynamic oxygen-rich protective atmosphere.</p>
+            <div class="card-stats">
+              <div class="c-stat"><span>Distance</span><b>1.00 AU</b></div>
+              <div class="c-stat"><span>Diameter</span><b>12,742 km</b></div>
+              <div class="c-stat"><span>Moons</span><b>1</b></div>
+            </div>
+            <button class="card-inspect-btn" onclick="openPlanetModal('earth')">
+              🔍 Inspect Earth in 3D
+            </button>
+          </div>
+        </div>
+
+        <!-- 2. Mars Card -->
+        <div class="planet-card" id="card-mars">
+          <div class="card-canvas-wrapper">
+            <canvas id="canvas-mars" class="planet-canvas"></canvas>
+            <span class="card-canvas-hint">🖱️ Drag to rotate</span>
+          </div>
+          <div class="card-info">
+            <div class="card-head">
+              <div class="planet-icon">🔴</div>
+              <div>
+                <h3 class="card-title">Mars</h3>
+                <p class="card-sub">The Red Desert</p>
+              </div>
+            </div>
+            <p class="card-desc">A cold, iron-rich desert world home to Olympus Mons, the solar system's tallest volcano at 22 km high.</p>
+            <div class="card-stats">
+              <div class="c-stat"><span>Distance</span><b>1.52 AU</b></div>
+              <div class="c-stat"><span>Diameter</span><b>6,779 km</b></div>
+              <div class="c-stat"><span>Moons</span><b>2</b></div>
+            </div>
+            <button class="card-inspect-btn" onclick="openPlanetModal('mars')">
+              🔍 Inspect Mars in 3D
+            </button>
+          </div>
+        </div>
+
+        <!-- 3. Jupiter Card -->
+        <div class="planet-card" id="card-jupiter">
+          <div class="card-canvas-wrapper">
+            <canvas id="canvas-jupiter" class="planet-canvas"></canvas>
+            <span class="card-canvas-hint">🖱️ Drag to rotate</span>
+          </div>
+          <div class="card-info">
+            <div class="card-head">
+              <div class="planet-icon">🟠</div>
+              <div>
+                <h3 class="card-title">Jupiter</h3>
+                <p class="card-sub">The Gas King</p>
+              </div>
+            </div>
+            <p class="card-desc">The largest planet in our solar system, with iconic swirling storms and the centuries-old Great Red Spot.</p>
+            <div class="card-stats">
+              <div class="c-stat"><span>Distance</span><b>5.20 AU</b></div>
+              <div class="c-stat"><span>Diameter</span><b>139,820 km</b></div>
+              <div class="c-stat"><span>Moons</span><b>95</b></div>
+            </div>
+            <button class="card-inspect-btn" onclick="openPlanetModal('jupiter')">
+              🔍 Inspect Jupiter in 3D
+            </button>
+          </div>
+        </div>
+
+        <!-- 4. Saturn Card -->
+        <div class="planet-card" id="card-saturn">
+          <div class="card-canvas-wrapper">
+            <canvas id="canvas-saturn" class="planet-canvas"></canvas>
+            <span class="card-canvas-hint">🖱️ Drag to rotate</span>
+          </div>
+          <div class="card-info">
+            <div class="card-head">
+              <div class="planet-icon">🪐</div>
+              <div>
+                <h3 class="card-title">Saturn</h3>
+                <p class="card-sub">The Ringed Jewel</p>
+              </div>
+            </div>
+            <p class="card-desc">Adorned with thousands of dazzling ringlets made of ice and rock spanning over 282,000 kilometers.</p>
+            <div class="card-stats">
+              <div class="c-stat"><span>Distance</span><b>9.58 AU</b></div>
+              <div class="c-stat"><span>Diameter</span><b>116,460 km</b></div>
+              <div class="c-stat"><span>Moons</span><b>146</b></div>
+            </div>
+            <button class="card-inspect-btn" onclick="openPlanetModal('saturn')">
+              🔍 Inspect Saturn in 3D
+            </button>
+          </div>
+        </div>
+
+        <!-- 5. Neptune Card -->
+        <div class="planet-card" id="card-neptune">
+          <div class="card-canvas-wrapper">
+            <canvas id="canvas-neptune" class="planet-canvas"></canvas>
+            <span class="card-canvas-hint">🖱️ Drag to rotate</span>
+          </div>
+          <div class="card-info">
+            <div class="card-head">
+              <div class="planet-icon">🔵</div>
+              <div>
+                <h3 class="card-title">Neptune</h3>
+                <p class="card-sub">The Ice Giant</p>
+              </div>
+            </div>
+            <p class="card-desc">Dark, cold, and whipped by supersonic supersonic winds reaching speeds over 2,000 km/h in deep outer space.</p>
+            <div class="card-stats">
+              <div class="c-stat"><span>Distance</span><b>30.05 AU</b></div>
+              <div class="c-stat"><span>Diameter</span><b>49,244 km</b></div>
+              <div class="c-stat"><span>Moons</span><b>16</b></div>
+            </div>
+            <button class="card-inspect-btn" onclick="openPlanetModal('neptune')">
+              🔍 Inspect Neptune in 3D
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+   
+    <section id="about" class="section about-section">
+      <div class="about-grid">
+        <div class="about-left">
+          <div class="section-tag">Cosmic Architecture</div>
+          <h2 class="section-title">Mind-Bending<br/><span class="gradient-text">Cosmic Facts</span></h2>
+          <p class="about-desc">
+            The observable universe spans roughly 93 billion light-years across and contains
+            an estimated 2 trillion galaxies. Our Milky Way alone holds up to 400 billion stars.
+          </p>
+          <div class="about-facts">
+            <div class="fact-item">
+              <div class="fact-icon">🌌</div>
+              <div>
+                <h4>Observable Universe</h4>
+                <p>93 billion light-years across — the cosmic horizon of all observable matter.</p>
+              </div>
+            </div>
+            <div class="fact-item">
+              <div class="fact-icon">⚡</div>
+              <div>
+                <h4>Speed of Light</h4>
+                <p>299,792 km/s — fast enough to circle Earth 7.5 times in a single second.</p>
+              </div>
+            </div>
+            <div class="fact-item">
+              <div class="fact-icon">🕳️</div>
+              <div>
+                <h4>Black Hole Singularities</h4>
+                <p>Regions of infinite density where gravitational pull prevents even light from escaping.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="about-right">
+          <div class="about-visual">
+            <canvas id="canvas-milkyway"></canvas>
+            <div class="about-badge">🌌 3D Milky Way Spiral</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <section id="contact" class="section contact-section">
+      <div class="section-header">
+        <div class="section-tag">Transmission Signal</div>
+        <h2 class="section-title">Launch Your <span class="gradient-text">Inquiry</span></h2>
+        <p class="section-desc">Have a question about the cosmos or planetary science? Send a signal to mission control.</p>
+      </div>
+      <div class="contact-wrapper">
+        <form class="contact-form" id="contact-form" onsubmit="handleSubmit(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Explorer Name</label>
+              <input type="text" id="name" name="name" placeholder="e.g. Carl Sagan" required />
+            </div>
+            <div class="form-group">
+              <label for="email">Subspace Frequency (Email)</label>
+              <input type="email" id="email" name="email" placeholder="explorer@cosmos.org" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="subject">Mission Subject</label>
+            <input type="text" id="subject" name="subject" placeholder="Interplanetary research inquiry..." />
+          </div>
+          <div class="form-group">
+            <label for="message">Transmission Data</label>
+            <textarea id="message" name="message" rows="5" placeholder="Share your cosmic questions or project details..."></textarea>
+          </div>
+          <button type="submit" class="btn-primary full-width" id="submit-btn">
+            Transmit Signal 🚀
+          </button>
+          <div class="form-success" id="form-success">
+            ✅ Transmission received! Mission control will reply shortly.
+          </div>
+        </form>
+
+        <div class="contact-info">
+          <div class="info-card">
+            <span>📡</span>
+            <div><h4>Deep Space Uplink</h4><p>contact@nova-universe.com</p></div>
+          </div>
+          <div class="info-card">
+            <span>🛸</span>
+            <div><h4>Mission Control</h4><p>+1 (555) NOVA-SPACE</p></div>
+          </div>
+          <div class="info-card">
+            <span>🔭</span>
+            <div><h4>Orbital Station</h4><p>Low Earth Orbit, Sector 7</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════
+         INTERACTIVE 3D PLANET INSPECTOR MODAL
+    ══════════════════════════════════════════════ -->
+    <div class="modal-overlay" id="planet-modal">
+      <div class="modal-card">
+        <button class="modal-close" onclick="closePlanetModal()" aria-label="Close Inspector">✕</button>
+
+        <div class="modal-grid">
+          <!-- 3D Canvas Area -->
+          <div class="modal-3d-wrapper">
+            <canvas id="modal-canvas"></canvas>
+            <div class="modal-3d-hint">🖱️ Drag to rotate • 🔍 Scroll to zoom</div>
+          </div>
+
+          <!-- Planet Details & Telemetry -->
+          <div class="modal-details">
+            <div class="modal-tag" id="m-tag">Planet Telemetry</div>
+            <h3 class="modal-title" id="m-title">Earth</h3>
+            <p class="modal-desc" id="m-desc">Detailed planetary description loading...</p>
+
+            <div class="telemetry-grid" id="m-telemetry">
+              <!-- Dynamically Populated -->
+            </div>
+
+            <!-- Atmosphere Breakdown -->
+            <div class="atmosphere-box">
+              <h4>Atmospheric Composition</h4>
+              <div class="atmosphere-bars" id="m-atmosphere">
+                <!-- Dynamically Populated -->
+              </div>
+            </div>
+
+            <!-- Modal Action Controls -->
+            <div class="modal-controls">
+              <button class="btn-secondary" id="modal-wireframe-btn" onclick="toggleModalWireframe()">
+                🕸️ Wireframe
+              </button>
+              <button class="btn-primary" onclick="resetModalCamera()">
+                🎯 Reset View
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════
+         FOOTER
+    ══════════════════════════════════════════════ -->
+    <footer class="footer">
+      <div class="footer-inner">
+        <div class="footer-logo">
+          <span class="logo-icon">✦</span> NOVA
+        </div>
+        <p class="footer-text">Exploring the universe, one pixel at a time.</p>
+        <p class="footer-copy">© 2026 NOVA Universe. Built with Three.js &amp; Vanilla JavaScript.</p>
+      </div>
+    </footer>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
