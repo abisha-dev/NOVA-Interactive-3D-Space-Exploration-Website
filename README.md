@@ -173,12 +173,31 @@ NOVA/
     ├── main.js
     └── style.css
 ---
+---
 
-## 🌌 Project Preview
+### 🌌 Project Preview
 
 <p align="center">
-  <img src="./assets/nova-preview.png" alt="NOVA - Explore the Universe" width="100%">
+  <img width="1905" height="967" alt="Screenshot 2026-09-07 121741" src="https://github.com/user-attachments/assets/ff784613-131c-4ca5-add4-056d8759310a" />
+" />
 </p>
+
+<p align="center">
+  <img width="1886" height="900" alt="NOVA Planets Section" src="https://github.com/user-attachments/assets/a9ebfd62-f5b2-4868-8ef2-7043a6e09f26" />
+
+</p>
+
+<p align="center">
+  <img width="1901" height="841" alt="NOVA About Section" src="https://github.com/user-attachments/assets/25d84323-163d-495d-9ede-f832e9d9382b" />
+
+</p>
+
+<p align="center">
+  <img width="1891" height="971" alt="image" src="https://github.com/user-attachments/assets/d847698b-6516-4793-a9f4-2bb00aba9821" />
+" />
+</p>
+
+---
 
 <p align="center">
   <strong>🌌 NOVA — Explore Beyond the Ordinary 🚀</strong>
