@@ -173,9 +173,9 @@ NOVA/
     ├── main.js
     └── style.css
 ---
----
 
-### 🌌 Project Preview
+
+## 🌌 Project Preview
 
 <p align="center">
   <img width="1905" height="967" alt="Screenshot 2026-09-07 121741" src="https://github.com/user-attachments/assets/ff784613-131c-4ca5-add4-056d8759310a" />
